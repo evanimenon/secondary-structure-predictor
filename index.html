@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Secondary Structure Predictor — Chou–Fasman / GOR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1>Secondary Structure Predictor</h1>
+    <p class="sub">Chou–Fasman (implemented) • GOR (coming soon)</p>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Input card -->
+  <section class="card">
+    <h2>Paste your protein sequence</h2>
+
+    <label for="sequence">Sequence (letters only). Spaces/line breaks are OK.</label>
+    <textarea id="sequence" rows="10" placeholder="MAQWNQLQQLDTRYLEQLHQLYSDSFPMELRQF..."></textarea>
+
+    <div class="row">
+      <div class="col">
+        <label for="method">Prediction method</label>
+        <select id="method">
+          <option value="chou_fasman" selected>Chou–Fasman</option>
+          <option value="gor">GOR (placeholder)</option>
+        </select>
+      </div>
+      <div class="col right">
+        <button id="run" class="btn">Predict</button>
+      </div>
+    </div>
+
+    <details class="hint">
+      <summary>Example</summary>
+      <pre>MAQWNQLQQLDTRYLEQLHQLYSDSFPMELRQF...</pre>
+    </details>
+  </section>
+
+  <!-- Results card -->
+  <section id="results" class="card hidden">
+    <h2>Result</h2>
+    <div id="summary" class="mono dim"></div>
+
+    <h3>Final assignment (color-coded)</h3>
+    <div id="blocks" class="mono scroll"></div>
+
+    <div class="grid">
+      <div>
+        <h3>Helical regions (H)</h3>
+        <ol id="helix-list" class="mono"></ol>
+      </div>
+      <div>
+        <h3>Beta-strand regions (S)</h3>
+        <ol id="strand-list" class="mono"></ol>
+      </div>
+    </div>
+
+    <h3>Conflicts & resolution</h3>
+    <ol id="conflicts" class="mono"></ol>
+
+    <div class="row">
+      <div class="col">
+        <button id="copy" class="btn ghost">Copy text report</button>
+      </div>
+      <div class="col right">
+        <button id="download" class="btn ghost">Download .txt</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>&copy; 2025 — Educational demo</small>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

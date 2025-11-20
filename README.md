@@ -4,7 +4,7 @@ This project implements the **Chou–Fasman algorithm** to predict secondary str
 
 ---
 
-## 🚀 Features
+## Features
 
 - Predicts:
   - **Helical regions (H)**
@@ -21,7 +21,7 @@ This project implements the **Chou–Fasman algorithm** to predict secondary str
 
 ---
 
-## 🧠 Algorithm Summary
+## Algorithm Summary
 
 | Step | Description |
 |------|-------------|
@@ -33,7 +33,7 @@ This project implements the **Chou–Fasman algorithm** to predict secondary str
 
 ---
 
-## ▶️ Running the Program
+## ▶Running the Program
 
 Run directly with Python:
 
@@ -50,7 +50,7 @@ python3 chou_fasman_predictor.py > output.txt
 
 ---
 
-## 📑 Example Output (Excerpt)
+## Example Output (Excerpt)
 
 ```
 HELICAL REGIONS (H):
@@ -65,7 +65,7 @@ STRAND REGIONS (S):
 
 ---
 
-## 📝 License
+## License
 
 Released under the **MIT License**
 Free for academic, personal, and commercial use.
