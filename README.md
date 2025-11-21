@@ -1,77 +1,83 @@
-# Chou-Fasman Secondary Structure Prediction
+# Chou–Fasman Secondary Structure Prediction
 
-This project implements the **Chou–Fasman algorithm** to predict secondary structure elements (α-helices and β-strands) from an input amino acid sequence. The algorithm performs nucleation, directional extension, and conflict resolution to generate a final H/S/coil assignment for every residue.
+This project implements the **Chou–Fasman algorithm** to predict secondary structure elements —
+**alpha-helices (H)** and **beta-strands (S)** — directly from an input protein sequence.
+
+The algorithm performs:
+
+* **Nucleation** (seed detection)
+* **Directional extension**
+* **Conflict resolution** between helix/strand predictions
+
+It outputs both **region-level predictions** and a **final residue-level annotation**.
 
 ---
 
 ## Features
 
-- Predicts:
-  - **Helical regions (H)**
-  - **Beta-strand regions (S)**
-  - **Coil / Non-structured regions**
-- Implements:
-  - Helix & strand nucleation windows
-  - Sliding-window extension rules
-  - Overlap conflict resolution (avg Pa vs avg Pb)
-- Outputs:
-  - Start/end indices of each predicted region
-  - Region lengths and sequences
-  - Final secondary structure line annotation
+* Predicts secondary structure regions:
+
+  * **Helices (H)**
+  * **Beta-strands (S)**
+  * **Coil / unassigned ('-')**
+* Implements full Chou–Fasman rules:
+
+  * Helix & strand nucleation windows
+  * Sliding-window extension in both directions
+  * Final conflict resolution (avg **Pa** vs **Pb**)
+* Outputs:
+
+  * Start–end positions of each predicted H/S region
+  * Region lengths and residue sequences
+  * Full final structure line
+    (e.g., `HHHSSSHH---HH...`)
 
 ---
 
 ## Algorithm Summary
 
-| Step | Description |
-|------|-------------|
-| Helix Nucleation | Scan 6-residue windows; ≥4 residues must have **Pa > 1.0** |
-| Helix Extension  | Extend left/right while sliding 4-residue windows have **ΣPa >= 4.0** |
-| Strand Nucleation | Scan 5-residue windows; ≥3 residues must have **Pb > 1.0** |
-| Strand Extension | Extend while sliding 4-residue windows have **ΣPb > 4.0** |
-| Conflict Resolution | For overlapping H/S assignments, compare **avg(Pa)** vs **avg(Pb)** |
+| Step                    | Logic                                                              |
+| ----------------------- | ------------------------------------------------------------------ |
+| **Helix Nucleation**    | Scan **6-residue** windows. Valid if **>=4 residues have Pa > 1.0** |
+| **Helix Extension**     | Extend left/right if **ΣPa (4-res window) >= 4.0**                  |
+| **Strand Nucleation**   | Scan **5-residue** windows. Valid if **>=3 residues have Pb > 1.0** |
+| **Strand Extension**    | Extend if **ΣPb (4-res window) > 4.0**                             |
+| **Conflict Resolution** | Compare **avg(Pa)** vs **avg(Pb)** over overlap → choose H or S    |
 
 ---
 
-## ▶Running the Program
+## Running the Python Program
 
-Run directly with Python:
-
+Run normally:
 ```bash
 python3 chou_fasman_predictor.py
+```
 
-````
-
-Save output to a file:
-
+Save results to a file:
 ```bash
 python3 chou_fasman_predictor.py > output.txt
 ```
 
 ---
 
-## Example Output (Excerpt)
-
+## Web Application (GitHub Pages)
+To open the website:
 ```
-HELICAL REGIONS (H):
-  1-23   MAQWNQLQQLDTRYLEQLHQLYS
-  25-67  SFPMELRQFLAPWIESQDWAYAASKESHATLVFHNLLGEIDQQ
-  ...
-
-STRAND REGIONS (S):
-  52-95  HATLVFHNLLGEIDQQYSRFLQESNVLYQHNLRRIKQFLQSRYL
-  ...
+https://evanimenon.github.io/secondary-structure-predictor/
 ```
 
 ---
 
 ## License
 
-Released under the **MIT License**
-Free for academic, personal, and commercial use.
+Released under the **MIT License**.
+Free for academic, research, and personal use.
 
 ---
 
+## Author
 
 **Evani Menon**
-B.Tech — IIIT Delhi
+B.Tech – IIIT Delhi
+
+---
